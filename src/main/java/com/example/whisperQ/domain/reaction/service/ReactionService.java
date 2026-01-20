@@ -50,7 +50,6 @@ public class ReactionService {
         // DB 저장 로직 추가
         Session session = sessionRepository.findBySessionCode(sessionIdStr)
                 .orElseThrow(() -> new EntityNotFoundException("Session not found with code: " + sessionIdStr));
-        Long sessionId = session.getId();
         
         ReactionLog log = ReactionLog.builder()
                 .session(session)

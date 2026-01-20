@@ -32,9 +32,10 @@ public class QuestionService {
     @Transactional
     public Long createQuestion(QuestionCreateRequest request) {
         // 1. 세션 조회
-        Long sessionId = Long.parseLong(request.sessionId());
-        Session session = sessionRepository.findById(sessionId)
-                .orElseThrow(() -> new EntityNotFoundException("Session not found: " + sessionId));
+        // 프론트엔드에서 세션 코드(String)를 보내므로 바로 조회
+        Session session = sessionRepository.findBySessionCode(request.sessionId())
+                .orElseThrow(() -> new EntityNotFoundException("Session not found with code: " + request.sessionId()));
+        Long sessionId = session.getId();
 
         // 2. 작성자 이름 결정
         String writerName;
