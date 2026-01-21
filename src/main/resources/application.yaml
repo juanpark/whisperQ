@@ -5,13 +5,13 @@ spring:
     redis:
       host: localhost
       port: 6379
-  
+
   datasource:
     url: jdbc:postgresql://localhost:5432/whisperq
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-  
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,3 +19,6 @@ spring:
       "[hibernate.format_sql]": true
       "[hibernate.show_sql]": true
       "[hibernate.dialect]": org.hibernate.dialect.PostgreSQLDialect
+
+  jackson:
+    time-zone: Asia/Seoul
